@@ -1,3 +1,21 @@
+## Git Flow
+
+This repo uses git flow (`git-flow` CLI):
+
+- `main` — production, deployed to krytama.com via Workers Builds; releases are tagged `vX.Y.Z`
+- `develop` — integration branch, day-to-day work
+- `feature/*`, `release/*`, `hotfix/*` — supporting branches (feature/release branch off `develop`; hotfix off `main`)
+
+Releasing:
+
+```
+git flow release start X.Y.Z
+GIT_EDITOR=true git flow release finish X.Y.Z
+git push origin main develop && git push origin vX.Y.Z
+```
+
+Note: `git flow release finish -m "..."` is broken on macOS (BSD getopt); use `GIT_EDITOR=true` and create the tag separately if a custom tag message is needed.
+
 ## Development
 
 When starting the dev server, use background mode:
