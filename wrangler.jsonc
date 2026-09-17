@@ -1,0 +1,22 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "kritama-site",
+	"compatibility_date": "2026-09-17",
+	"kv_namespaces": [
+		{
+			"binding": "SESSION"
+		}
+	],
+	"images": {
+		"binding": "IMAGES"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"routes": [
+		{
+			"pattern": "kritama.com",
+			"custom_domain": true
+		}
+	]
+}

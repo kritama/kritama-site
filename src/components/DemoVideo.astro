@@ -1,0 +1,82 @@
+<section id="home-demo-video" class="bg-base-200 px-6 py-20 sm:py-24 lg:px-8">
+  <div class="mx-auto max-w-7xl">
+    <div class="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
+      <div class="max-w-2xl">
+        <p class="text-base/7 font-semibold text-primary">Product walkthrough</p>
+        <h2
+          class="mt-2 text-4xl font-semibold tracking-tight text-balance text-base-content sm:text-5xl"
+        >
+          See Kritama in motion
+        </h2>
+        <p class="mt-6 text-lg/8 text-base-content/70">
+          A closer look at how Kritama structures context, keeps model behavior observable, and
+          turns reusable intelligence into production assistants.
+        </p>
+
+        <dl
+          class="mt-8 grid gap-4 text-sm/6 text-base-content/70 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3"
+        >
+          <div
+            class="rounded-lg border border-base-content/10 bg-base-100/70 p-4 shadow-sm shadow-base-content/5"
+          >
+            <dt class="font-semibold text-base-content">Context</dt>
+            <dd class="mt-1">Switching without noise</dd>
+          </div>
+          <div
+            class="rounded-lg border border-base-content/10 bg-base-100/70 p-4 shadow-sm shadow-base-content/5"
+          >
+            <dt class="font-semibold text-base-content">Signals</dt>
+            <dd class="mt-1">Runs you can inspect</dd>
+          </div>
+          <div
+            class="rounded-lg border border-base-content/10 bg-base-100/70 p-4 shadow-sm shadow-base-content/5"
+          >
+            <dt class="font-semibold text-base-content">Control</dt>
+            <dd class="mt-1">Policies in code</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div
+        id="home-demo-video-frame"
+        class="relative overflow-hidden rounded-2xl border border-base-content/10 bg-neutral shadow-2xl shadow-primary/15"
+      >
+        <div
+          id="home-demo-video-player"
+          class="aspect-video"
+          data-plyr-provider="youtube"
+          data-plyr-embed-id="5yUaO-9wCdM"
+          aria-label="Kritama product walkthrough video"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Plyr from 'plyr'
+
+  const player = document.getElementById('home-demo-video-player')
+  if (player) {
+    new Plyr(player, {
+      controls: [
+        'play-large',
+        'play',
+        'progress',
+        'current-time',
+        'mute',
+        'volume',
+        'captions',
+        'settings',
+        'pip',
+        'fullscreen',
+      ],
+      youtube: {
+        noCookie: true,
+        rel: 0,
+        modestbranding: 1,
+      },
+    })
+  }
+</script>

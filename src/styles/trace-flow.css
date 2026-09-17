@@ -1,0 +1,165 @@
+.trace-flow-diagram {
+  --flow-color: var(--color-primary);
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: min(9.5rem, 44cqw);
+  min-height: 7.5rem;
+  overflow: hidden;
+}
+
+.trace-flow-diagram::before {
+  content: "";
+  position: absolute;
+  inset: 26% 14%;
+  z-index: -1;
+  border-radius: 9999px;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in oklch, var(--flow-color) 7%, transparent) 0%,
+    color-mix(in oklch, var(--flow-color) 4%, transparent) 42%,
+    transparent 68%
+  );
+  filter: blur(6px);
+}
+
+.trace-flow-diagram::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  height: 4.6rem;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 0.62rem,
+    color-mix(in oklch, var(--flow-color) 20%, transparent) 0.64rem,
+    transparent 0.72rem
+  );
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  opacity: 0.46;
+}
+
+.trace-flow-strand {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: 1px;
+  border-radius: 9999px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 34%,
+      color-mix(in oklch, var(--flow-color) 42%, transparent) 44%,
+      color-mix(in oklch, white 14%, var(--flow-color)) 50%,
+      color-mix(in oklch, var(--flow-color) 42%, transparent) 56%,
+      transparent 66%,
+      transparent 100%
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklch, var(--flow-color) 48%, transparent) 0%,
+      color-mix(in oklch, var(--flow-color) 68%, transparent) 50%,
+      color-mix(in oklch, var(--flow-color) 48%, transparent) 100%
+    );
+  background-position:
+    135% 0,
+    0 0;
+  background-size:
+    230% 100%,
+    100% 100%;
+  box-shadow:
+    0 0 0.22rem color-mix(in oklch, var(--flow-color) 24%, transparent),
+    0 0.38rem 0 color-mix(in oklch, var(--flow-color) 42%, transparent),
+    0 -0.38rem 0 color-mix(in oklch, var(--flow-color) 42%, transparent),
+    0 0.76rem 0 color-mix(in oklch, var(--flow-color) 26%, transparent),
+    0 -0.76rem 0 color-mix(in oklch, var(--flow-color) 26%, transparent);
+  animation: trace-flow-strands 4.8s ease-in-out infinite;
+}
+
+.trace-flow-strand-1 {
+  top: calc(50% - 1.35rem);
+  opacity: 0.42;
+}
+
+.trace-flow-strand-2 {
+  top: 50%;
+  opacity: 0.72;
+  animation-delay: -1.25s;
+}
+
+.trace-flow-strand-3 {
+  top: calc(50% + 1.35rem);
+  opacity: 0.42;
+  animation-delay: -2.5s;
+}
+
+.trace-flow-node {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  width: clamp(4rem, 18cqw, 5rem);
+  height: clamp(4rem, 18cqw, 5rem);
+  place-items: center;
+  border: 1px solid color-mix(in oklch, var(--color-base-content) 12%, transparent);
+  border-radius: 9999px;
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      color-mix(in oklch, var(--color-base-content) 18%, transparent),
+      transparent 46%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklch, var(--color-base-200) 88%, var(--color-base-content) 12%),
+      color-mix(in oklch, var(--color-base-300) 92%, var(--color-base-content) 8%)
+    );
+  box-shadow:
+    inset 0 0 0 0.45rem color-mix(in oklch, var(--color-base-content) 4%, transparent),
+    0 0.5rem 1.2rem color-mix(in oklch, var(--flow-color) 8%, transparent),
+    0 0 0 1px color-mix(in oklch, var(--color-base-content) 5%, transparent);
+  transform: translate(-50%, -50%);
+}
+
+.trace-flow-node-left {
+  left: 18%;
+}
+
+.trace-flow-node-center {
+  left: 50%;
+  width: clamp(4.8rem, 22cqw, 6rem);
+  height: clamp(4.8rem, 22cqw, 6rem);
+}
+
+.trace-flow-node-right {
+  left: 82%;
+}
+
+@keyframes trace-flow-strands {
+  from {
+    background-position:
+      135% 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      -135% 0,
+      0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trace-flow-strand {
+    animation: none;
+    background-position:
+      0 0,
+      0 0;
+  }
+}

@@ -1,0 +1,39 @@
+.language-hcl {
+  color: color-mix(in oklch, var(--color-neutral-content) 78%, transparent);
+}
+
+.hcl-keyword {
+  color: color-mix(in oklch, var(--color-secondary) 88%, white 12%);
+}
+
+.hcl-string {
+  color: color-mix(in oklch, var(--color-success) 82%, white 18%);
+}
+
+.hcl-number {
+  color: color-mix(in oklch, var(--color-info) 82%, white 18%);
+}
+
+.hcl-identifier {
+  color: color-mix(in oklch, var(--color-neutral-content) 86%, transparent);
+}
+
+.hcl-punctuation {
+  color: color-mix(in oklch, var(--color-neutral-content) 58%, transparent);
+}
+
+.hcl-comment {
+  color: color-mix(in oklch, var(--color-neutral-content) 42%, transparent);
+}
+
+.language-markdown {
+  color: color-mix(in oklch, var(--color-neutral-content) 80%, transparent);
+}
+
+.hcl-markdown-heading {
+  color: color-mix(in oklch, var(--color-info) 88%, white 12%);
+}
+
+.hcl-markdown-emphasis {
+  color: color-mix(in oklch, var(--color-warning) 86%, white 14%);
+}

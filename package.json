@@ -9,10 +9,19 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "deploy": "astro build && wrangler deploy",
+    "cf-typegen": "wrangler types",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.3.3"
+    "@astrojs/cloudflare": "^14.3.2",
+    "@plausible-analytics/tracker": "^0.4.6",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.3",
+    "daisyui": "^5.7.39",
+    "heroicons": "^2.2.0",
+    "plyr": "^3.8.4",
+    "tailwindcss": "^4.3.3"
   },
   "allowScripts": {
     "esbuild": true
