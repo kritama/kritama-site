@@ -1,0 +1,388 @@
+---
+import CodeWindow from './CodeWindow.astro'
+
+const skeletons = Array.from({ length: 8 }, (_, index) => index)
+---
+
+<section id="home-bento" class="bg-base-200 pt-8 pb-24 sm:pt-10 sm:pb-32">
+  <div class="mx-auto max-w-2xl lg:max-w-7xl">
+    <h2 class="text-center text-base/7 font-semibold text-primary">Fractal Context Engine</h2>
+    <p
+      class="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-base-content sm:text-5xl"
+    >
+      The Intelligence layer you can control
+    </p>
+
+    <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
+      <div class="relative lg:row-span-2">
+        <div class="absolute inset-px rounded-lg bg-base-100 lg:rounded-l-4xl"></div>
+        <div
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(0.5rem+1px)] lg:rounded-l-[calc(2rem+1px)]"
+        >
+          <div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
+            <p
+              class="mt-2 text-lg font-medium tracking-tight text-base-content max-lg:text-center"
+            >
+              Dynamic Context Switching
+            </p>
+            <p
+              class="mt-2 max-w-lg text-sm/6 text-base-content/65 max-lg:text-center"
+            >
+              Relevant context moves in and out as the task changes, keeping the model focused on
+              the problem at hand without carrying unnecessary noise.
+            </p>
+          </div>
+          <div class="@container relative min-h-120 w-full grow overflow-hidden">
+            <div
+              id="dynamic-context-switcher"
+              class="context-switcher absolute top-8 left-1/2 -translate-x-1/2"
+              aria-label="Dynamic context switching workflow"
+            >
+              <ol class="context-timeline" aria-label="Context switching steps">
+                <li
+                  class="context-timeline-step"
+                  style="--step-delay: 0s; --step-color: var(--color-primary);"
+                  aria-label="chat-router"
+                  tabindex="0"
+                >
+                  <span class="context-timeline-dot" aria-hidden="true"></span>
+                </li>
+                <li
+                  class="context-timeline-step"
+                  style="--step-delay: -9s; --step-color: var(--color-secondary);"
+                  aria-label="chat-load-preferences"
+                  tabindex="0"
+                >
+                  <span class="context-timeline-dot" aria-hidden="true"></span>
+                </li>
+                <li
+                  class="context-timeline-step"
+                  style="--step-delay: -6s; --step-color: var(--color-accent);"
+                  aria-label="chat-media-search"
+                  tabindex="0"
+                >
+                  <span class="context-timeline-dot" aria-hidden="true"></span>
+                </li>
+                <li
+                  class="context-timeline-step"
+                  style="--step-delay: -3s; --step-color: var(--color-base-content);"
+                  aria-label="response-with-artifact"
+                  tabindex="0"
+                >
+                  <span class="context-timeline-dot" aria-hidden="true"></span>
+                </li>
+              </ol>
+
+              <div class="context-canvas" aria-label="Context blocks switching in and out">
+                <div
+                  class="context-block context-block-primary"
+                  style="--step-delay: 0s; --step-color: var(--color-primary);"
+                >
+                  {
+                    skeletons.map((index) => (
+                      <div class="context-skeleton" style={`--context-index: ${index};`}>
+                        <span class="context-block-dot"></span>
+                        <span class="context-block-line context-block-line-strong"></span>
+                        <span class="context-block-line"></span>
+                        <span class="context-block-line context-block-line-short"></span>
+                      </div>
+                    ))
+                  }
+                </div>
+                <div
+                  class="context-block context-block-secondary"
+                  style="--step-delay: -9s; --step-color: var(--color-secondary);"
+                >
+                  {
+                    skeletons.map((index) => (
+                      <div class="context-skeleton" style={`--context-index: ${index};`}>
+                        <span class="context-block-dot"></span>
+                        <span class="context-block-line context-block-line-strong"></span>
+                        <span class="context-block-line context-block-line-medium"></span>
+                        <span class="context-block-line"></span>
+                      </div>
+                    ))
+                  }
+                </div>
+                <div
+                  class="context-block context-block-accent"
+                  style="--step-delay: -6s; --step-color: var(--color-accent);"
+                >
+                  {
+                    skeletons.map((index) => (
+                      <div class="context-skeleton" style={`--context-index: ${index};`}>
+                        <span class="context-block-dot"></span>
+                        <span class="context-block-line context-block-line-strong"></span>
+                        <span class="context-block-line"></span>
+                        <span class="context-block-line context-block-line-short"></span>
+                      </div>
+                    ))
+                  }
+                </div>
+                <div
+                  class="context-block context-block-base"
+                  style="--step-delay: -3s; --step-color: var(--color-base-content);"
+                >
+                  {
+                    skeletons.map((index) => (
+                      <div class="context-skeleton" style={`--context-index: ${index};`}>
+                        <span class="context-block-dot"></span>
+                        <span class="context-block-line context-block-line-strong"></span>
+                        <span class="context-block-line context-block-line-medium"></span>
+                        <span class="context-block-line"></span>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow-sm shadow-primary/5 outline outline-base-content/10 lg:rounded-l-4xl"
+        >
+        </div>
+      </div>
+
+      <div class="relative max-lg:row-start-1">
+        <div class="absolute inset-px rounded-lg bg-base-100 max-lg:rounded-t-4xl"></div>
+        <div
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(0.5rem+1px)] max-lg:rounded-t-[calc(2rem+1px)]"
+        >
+          <div class="px-8 pt-8 sm:px-10 sm:pt-10">
+            <p
+              class="mt-2 text-lg font-medium tracking-tight text-base-content max-lg:text-center"
+            >
+              Observable Intelligence
+            </p>
+            <p
+              class="mt-2 max-w-lg text-sm/6 text-base-content/65 max-lg:text-center"
+            >
+              See where problems occur, reproduce them and fix problems systematically.
+            </p>
+          </div>
+          <div class="@container flex flex-1 items-center overflow-visible py-2 lg:pb-2">
+            <div
+              id="observable-intelligence-network"
+              class="observable-network"
+              aria-label="Observable intelligence network with a patchable fault node"
+            >
+              <svg
+                class="observable-links"
+                viewBox="0 0 560 320"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  class="observable-link observable-link-primary"
+                  d="M70 160 C124 116 156 98 207 96"
+                />
+                <path
+                  class="observable-link observable-link-secondary"
+                  d="M70 160 C124 194 156 220 207 224"
+                />
+                <path
+                  class="observable-link observable-link-primary"
+                  d="M207 96 C258 96 302 96 353 96"
+                />
+                <path
+                  class="observable-link observable-link-muted"
+                  d="M207 96 C258 128 302 184 353 224"
+                />
+                <path
+                  class="observable-link observable-link-muted"
+                  d="M207 224 C258 184 302 128 353 96"
+                />
+                <path
+                  class="observable-link observable-link-fault"
+                  d="M207 224 C258 224 302 224 353 224"
+                />
+                <path
+                  class="observable-link observable-link-fault"
+                  d="M353 224 C402 218 430 192 470 160"
+                />
+                <path
+                  class="observable-link observable-link-secondary"
+                  d="M353 96 C402 102 430 130 470 160"
+                />
+              </svg>
+
+              <div
+                class="observable-node observable-node-start"
+                style="--x: 13%; --y: 50%;"
+              >
+                <span class="observable-node-dot"></span>
+                <span class="observable-node-name">N-01</span>
+                <span class="observable-node-status">ACTIVE</span>
+              </div>
+              <div class="observable-node observable-node-a" style="--x: 37%; --y: 30%;">
+                <span class="observable-node-dot"></span>
+                <span class="observable-node-name">N-03</span>
+                <span class="observable-node-status">ACTIVE</span>
+              </div>
+              <div class="observable-node observable-node-b" style="--x: 63%; --y: 30%;">
+                <span class="observable-node-dot"></span>
+                <span class="observable-node-name">N-08</span>
+                <span class="observable-node-status">ACTIVE</span>
+              </div>
+              <button
+                id="observable-fault-node"
+                type="button"
+                class="observable-node observable-node-fault"
+                style="--x: 37%; --y: 70%;"
+                aria-label="Fault node. Hover or focus to patch"
+              >
+                <span class="observable-node-dot"></span>
+                <span class="observable-node-name">N-10</span>
+                <span class="observable-node-status observable-status-fault">FAULT</span>
+                <span class="observable-node-status observable-status-patched">PATCHED</span>
+              </button>
+              <div class="observable-node observable-node-c" style="--x: 63%; --y: 70%;">
+                <span class="observable-node-dot"></span>
+                <span class="observable-node-name">N-14</span>
+                <span class="observable-node-status">ACTIVE</span>
+              </div>
+              <div
+                class="observable-node observable-node-end"
+                style="--x: 86%; --y: 50%;"
+              >
+                <span class="observable-node-dot"></span>
+                <span class="observable-node-name">N-16</span>
+                <span class="observable-node-status">ACTIVE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow-sm shadow-primary/5 outline outline-base-content/10 max-lg:rounded-t-4xl"
+        >
+        </div>
+      </div>
+
+      <div class="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
+        <div class="absolute inset-px rounded-lg bg-base-100"></div>
+        <div
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(0.5rem+1px)]"
+        >
+          <div class="px-8 pt-8 sm:px-10 sm:pt-10">
+            <p
+              class="mt-2 text-lg font-medium tracking-tight text-base-content max-lg:text-center"
+            >
+              Small Model Advantage
+            </p>
+            <p
+              class="mt-2 max-w-lg text-sm/6 text-base-content/65 max-lg:text-center"
+            >
+              Using smaller models means cheaper costs and higher throughput. Your agents respond
+              faster and use fewer tokens.
+            </p>
+          </div>
+          <div
+            class="@container flex flex-1 items-center justify-center px-6 pt-8 pb-12 sm:px-8 sm:pb-14 lg:pb-12"
+          >
+            <div id="small-model-metrics" class="small-model-metrics">
+              <div class="small-model-metric">
+                <div
+                  class="small-model-ring"
+                  style="--metric-value: 24%; --metric-color: var(--color-primary);"
+                  role="progressbar"
+                  aria-label="Low cost, $1.50 per million output tokens"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="24"
+                >
+                  <div class="small-model-ring-content">
+                    <span class="small-model-ring-value text-primary">$1.50</span>
+                  </div>
+                </div>
+                <div class="small-model-metric-caption">
+                  <p class="small-model-metric-label">Cost</p>
+                  <p class="small-model-metric-unit">M output tokens</p>
+                </div>
+              </div>
+
+              <div class="small-model-metric">
+                <div
+                  class="small-model-ring"
+                  style="--metric-value: 88%; --metric-color: var(--color-secondary);"
+                  role="progressbar"
+                  aria-label="High throughput, 200 tokens per second"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="88"
+                >
+                  <div class="small-model-ring-content">
+                    <span class="small-model-ring-value text-secondary">200</span>
+                  </div>
+                </div>
+                <div class="small-model-metric-caption">
+                  <p class="small-model-metric-label">Throughput</p>
+                  <p class="small-model-metric-unit">tok / sec</p>
+                </div>
+              </div>
+
+              <div class="small-model-metric">
+                <div
+                  class="small-model-ring"
+                  style="--metric-value: 32%; --metric-color: var(--color-accent);"
+                  role="progressbar"
+                  aria-label="Low latency, 1 to 2 seconds per LLM call"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="32"
+                >
+                  <div class="small-model-ring-content">
+                    <span class="small-model-ring-value text-accent">1 - 2s</span>
+                  </div>
+                </div>
+                <div class="small-model-metric-caption">
+                  <p class="small-model-metric-label">Latency</p>
+                  <p class="small-model-metric-unit">llm call</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow-sm shadow-primary/5 outline outline-base-content/10"
+        >
+        </div>
+      </div>
+
+      <div class="relative lg:row-span-2">
+        <div
+          class="absolute inset-px rounded-lg bg-base-100 max-lg:rounded-b-4xl lg:rounded-r-4xl"
+        ></div>
+        <div
+          class="relative flex h-full flex-col overflow-hidden rounded-[calc(0.5rem+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]"
+        >
+          <div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
+            <p
+              class="mt-2 text-lg font-medium tracking-tight text-base-content max-lg:text-center"
+            >
+              Programmable Intelligence
+            </p>
+            <p
+              class="mt-2 max-w-lg text-sm/6 text-base-content/65 max-lg:text-center"
+            >
+              HCL defines the structure, markdown defines the intelligence. Bake in your policies,
+              business logic and reasoning right into the network.
+            </p>
+          </div>
+          <div class="relative min-h-120 w-full grow">
+            <CodeWindow
+              id="home-bento-code-window"
+              containerClass="absolute top-10 right-0 bottom-0 left-10 overflow-hidden rounded-tl-xl bg-neutral shadow-2xl shadow-primary/15 outline outline-base-content/10"
+              panelClass="h-full overflow-hidden bg-neutral"
+              preClass="h-full overflow-auto px-6 pt-6 pb-14 text-left text-[0.8125rem]/6 text-neutral-content/80"
+            />
+          </div>
+        </div>
+        <div
+          class="pointer-events-none absolute inset-px rounded-lg shadow-sm shadow-primary/5 outline outline-base-content/10 max-lg:rounded-b-4xl lg:rounded-r-4xl"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,94 @@
+---
+import {
+  heroNetworkLayers,
+  heroNetworkNodes,
+  heroNetworkLinks,
+  heroNetworkRouteOptions,
+} from '../lib/hero-network-geometry'
+
+const layers = heroNetworkLayers()
+const nodes = heroNetworkNodes()
+const links = heroNetworkLinks(nodes)
+const routeOptions = heroNetworkRouteOptions(nodes)
+---
+
+<div
+  id="home-hero-network"
+  class="hero-network-window w-full overflow-hidden rounded-tl-xl bg-neutral shadow-2xl shadow-primary/20"
+  aria-label="Layered intelligence network"
+>
+  <svg
+    class="hero-network-svg"
+    viewBox="0 0 480 520"
+    preserveAspectRatio="xMinYMid meet"
+    role="img"
+    aria-hidden="true"
+  >
+    <g class="hero-network-layer-guides">
+      {
+        layers.map((layer) => <line x1={layer.x} y1="56" x2={layer.x} y2="464" />)
+      }
+    </g>
+    <g class="hero-network-links">
+      <path class="hero-network-entry-link" d="M0 260 C30 260 62 260 92 260" />
+      {
+        links.map((link) => (
+          <path class={`hero-network-link hero-network-link-${link.tone}`} d={link.d} />
+        ))
+      }
+    </g>
+    <g class="hero-network-active-routes">
+      {
+        [0, 1, 2, 3].map((index) => (
+          <path class="hero-network-active-route" data-hero-active-route={index} d="" />
+        ))
+      }
+    </g>
+    <g class="hero-network-pulses">
+      {
+        [0, 1, 2, 3].map((index) => (
+          <g class="hero-network-pulse" data-hero-pulse={index}>
+            <circle class="hero-network-pulse-halo" r="9" />
+            <circle class="hero-network-pulse-core" r="4.5" />
+          </g>
+        ))
+      }
+    </g>
+    <g class="hero-network-nodes">
+      {
+        nodes.map((node) => (
+          <g
+            class={[
+              'hero-network-node',
+              `hero-network-node-${node.tone}`,
+              node.major && 'hero-network-node-major',
+            ]
+              .filter(Boolean)
+              .join(' ')}
+            transform={`translate(${node.x} ${node.y})`}
+          >
+            <circle class="hero-network-node-halo" r={node.major ? 24 : 13} />
+            <circle class="hero-network-node-ring" r={node.major ? 15 : 8} />
+            <circle class="hero-network-node-core" r={node.major ? 6 : 4} />
+          </g>
+        ))
+      }
+    </g>
+    <g class="hero-network-route-options" aria-hidden="true">
+      {
+        routeOptions.map((route) => (
+          <path class="hero-network-route-option" data-tone={route.tone} d={route.d} />
+        ))
+      }
+    </g>
+  </svg>
+</div>
+
+<script>
+  import { initHeroNetwork } from '../scripts/hero-network'
+
+  const root = document.getElementById('home-hero-network')
+  if (root) {
+    initHeroNetwork(root)
+  }
+</script>

@@ -1,0 +1,95 @@
+.small-model-metrics {
+  display: grid;
+  width: min(100%, 30rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.5rem, 2cqw, 1rem);
+}
+
+.small-model-metric {
+  display: grid;
+  min-width: 0;
+  justify-items: center;
+  gap: 0.65rem;
+  text-align: center;
+}
+
+.small-model-ring {
+  position: relative;
+  display: grid;
+  width: clamp(5.4rem, 23cqw, 6.75rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 9999px;
+  background:
+    conic-gradient(
+      var(--metric-color) var(--metric-value),
+      color-mix(in oklch, var(--color-base-content) 12%, transparent) 0
+    );
+  box-shadow:
+    0 0.8rem 1.8rem color-mix(in oklch, var(--metric-color) 12%, transparent),
+    0 0 0 1px color-mix(in oklch, var(--metric-color) 24%, transparent) inset;
+}
+
+.small-model-ring::before {
+  content: "";
+  position: absolute;
+  inset: clamp(0.58rem, 2.2cqw, 0.72rem);
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      circle at 50% 28%,
+      color-mix(in oklch, var(--color-base-content) 12%, transparent),
+      transparent 42%
+    ),
+    var(--color-base-100);
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--color-base-content) 8%, transparent) inset,
+    0 0.45rem 1rem color-mix(in oklch, black 12%, transparent) inset;
+}
+
+.small-model-ring-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 0.08rem;
+  padding: 0.7rem;
+}
+
+.small-model-ring-value {
+  font-size: clamp(1.18rem, 4.7cqw, 1.65rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.small-model-metric-caption {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+}
+
+.small-model-metric-label,
+.small-model-metric-unit {
+  margin: 0;
+}
+
+.small-model-metric-label {
+  color: color-mix(in oklch, var(--color-base-content) 76%, transparent);
+  font-size: clamp(0.72rem, 2.8cqw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.small-model-metric-unit {
+  color: color-mix(in oklch, var(--color-base-content) 56%, transparent);
+  font-size: clamp(0.62rem, 2.4cqw, 0.74rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+@container (max-width: 30rem) {
+  .small-model-ring {
+    width: clamp(4.85rem, 25cqw, 5.75rem);
+  }
+}

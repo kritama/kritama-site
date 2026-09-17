@@ -1,0 +1,90 @@
+---
+import { highlightHcl, highlightMarkdown } from '../lib/highlight'
+import { terraformExample, personaExample } from '../lib/code-examples'
+
+interface Props {
+  id: string
+  containerClass: string
+  panelClass: string
+  preClass: string
+}
+
+const { id, containerClass, panelClass, preClass } = Astro.props
+
+const highlightedTerraform = highlightHcl(terraformExample)
+const highlightedPersona = highlightMarkdown(personaExample)
+
+const tabBaseClass =
+  'border-r border-t-2 px-4 py-2 text-left transition focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary'
+const activeTabClass =
+  'border-t-secondary border-b border-r-base-content/10 border-b-neutral bg-neutral text-neutral-content shadow-[inset_0_1px_0_color-mix(in_oklch,var(--color-secondary)_55%,transparent)]'
+const inactiveTabClass =
+  'border-t-transparent border-b border-base-content/10 bg-base-100/40 text-neutral-content/45 hover:bg-base-content/5 hover:text-neutral-content/75'
+---
+
+<div id={id} class={containerClass} data-code-tabs>
+  <div class="flex bg-neutral ring-1 ring-base-content/10">
+    <div
+      class="-mb-px flex min-w-0 text-sm/6 font-medium text-neutral-content/65"
+      role="tablist"
+      aria-label="Code example files"
+    >
+      <button
+        id={`${id}-main-tab`}
+        type="button"
+        role="tab"
+        data-code-tab="main"
+        aria-selected="true"
+        aria-controls={`${id}-main-panel`}
+        tabindex="0"
+        class={`${tabBaseClass} ${activeTabClass}`}
+      >
+        main.tf
+      </button>
+      <button
+        id={`${id}-persona-tab`}
+        type="button"
+        role="tab"
+        data-code-tab="persona"
+        aria-selected="false"
+        aria-controls={`${id}-persona-panel`}
+        tabindex="-1"
+        class={`${tabBaseClass} ${inactiveTabClass}`}
+      >
+        persona.md
+      </button>
+    </div>
+    <div class="-mb-px min-w-6 flex-1 border-b border-base-content/10" aria-hidden="true"></div>
+  </div>
+
+  <div
+    id={`${id}-main-panel`}
+    role="tabpanel"
+    data-code-panel="main"
+    aria-labelledby={`${id}-main-tab`}
+    class={panelClass}
+  >
+    <pre class={preClass}><code class="language-hcl" set:html={highlightedTerraform}></code></pre>
+  </div>
+
+  <div
+    id={`${id}-persona-panel`}
+    role="tabpanel"
+    data-code-panel="persona"
+    aria-labelledby={`${id}-persona-tab`}
+    hidden
+    class={panelClass}
+  >
+    <pre
+      class={preClass}
+    ><code class="language-markdown" set:html={highlightedPersona}></code></pre>
+  </div>
+</div>
+
+<script>
+  import { initCodeTabs } from '../scripts/code-tabs'
+
+  document.querySelectorAll<HTMLElement>('[data-code-tabs]').forEach((root) => {
+    initCodeTabs(root)
+  })
+</script>

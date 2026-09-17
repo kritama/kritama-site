@@ -1,0 +1,119 @@
+---
+import HeroNetwork from './HeroNetwork.astro'
+---
+
+<section id="home-hero" class="relative isolate overflow-hidden bg-base-100">
+  <div class="absolute inset-x-0 top-6 z-10 sm:top-10">
+    <div class="mx-auto flex max-w-7xl justify-end px-6 lg:px-0">
+      <label
+        class="flex cursor-pointer items-center gap-3 rounded-full border border-base-content/20 bg-base-100/80 px-4 py-2 text-sm font-medium text-base-content shadow-lg backdrop-blur"
+      >
+        <span class="hero-sun size-5 text-warning"></span>
+        <span class="sr-only">Toggle theme</span>
+        <input
+          id="home-theme-toggle"
+          type="checkbox"
+          class="toggle toggle-primary bg-base-200/80"
+          style="--tglbg: var(--color-base-content);"
+          aria-label="Toggle between light and dark theme"
+          data-home-theme-toggle
+        />
+        <span class="hero-moon size-5 text-info"></span>
+      </label>
+    </div>
+  </div>
+  <div
+    class="relative isolate overflow-hidden bg-gradient-to-b from-primary/10 via-base-100 to-base-200"
+  >
+    <div
+      class="mx-auto max-w-7xl pt-10 pb-20 sm:pb-24 lg:grid lg:grid-cols-2 lg:gap-x-10 lg:py-28"
+    >
+      <div class="px-6 lg:pr-0 lg:pl-8 lg:pt-4">
+        <div class="mx-auto max-w-2xl">
+          <div class="max-w-xl">
+            <div class="h-14 sm:h-16">
+              <img src="/images/light-icon.svg" alt="Kritama" class="h-full w-auto dark:hidden" />
+              <img src="/images/dark-icon.svg" alt="" class="hidden h-full w-auto dark:block" />
+            </div>
+
+            <div class="mt-20 sm:mt-24 lg:mt-14">
+              <a
+                href="#home-bento"
+                class="inline-flex flex-wrap items-center gap-x-6 gap-y-3"
+              >
+                <span
+                  class="rounded-full bg-primary/10 px-3 py-1 text-sm/6 font-semibold text-primary ring-1 ring-inset ring-primary/25"
+                >
+                  Reliable Intelligence
+                </span>
+                <span
+                  class="inline-flex items-center gap-x-2 text-sm/6 font-medium text-base-content/70"
+                >
+                  <span>Build assistants that hold up in production</span>
+                  <span class="hero-chevron-right size-5 text-base-content/45"></span>
+                </span>
+              </a>
+            </div>
+
+            <h1
+              class="mt-10 text-5xl font-semibold tracking-tight text-pretty text-base-content sm:text-7xl"
+            >
+              Kritama
+            </h1>
+            <p
+              class="mt-8 text-lg font-medium text-pretty text-base-content/65 sm:text-xl/8"
+            >
+              Build digital assistants that are accurate, efficient, and maintainable at scale.
+            </p>
+            <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <code
+                class="rounded-md bg-neutral px-3.5 py-2.5 font-mono text-sm text-neutral-content shadow-sm shadow-base-content/5 ring-1 ring-base-content/10"
+              >
+                <span class="select-none text-primary">$</span> npx @kritama/tama-kit bootstrap
+              </code>
+              <a
+                href="https://github.com/kritama/tama-kit"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-x-1.5 text-sm/6 font-semibold text-base-content transition hover:text-primary"
+              >
+                View on GitHub
+                <span class="hero-arrow-right size-4"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-20 min-w-0 sm:mt-24 md:mx-auto md:max-w-2xl lg:mx-0 lg:mt-0 lg:w-full">
+        <div
+          aria-hidden="true"
+          class="absolute inset-y-0 right-1/2 -z-10 -mr-10 w-[200%] skew-x-[-30deg] bg-base-100 shadow-xl shadow-primary/10 ring-1 ring-base-content/10 md:-mr-20 lg:-mr-36"
+        >
+        </div>
+        <div class="shadow-lg shadow-primary/15 md:rounded-3xl">
+          <div class="bg-primary [clip-path:inset(0)] md:[clip-path:inset(0_round_1.5rem)]">
+            <div
+              aria-hidden="true"
+              class="absolute -inset-y-px left-1/2 -z-10 ml-10 w-[200%] skew-x-[-30deg] bg-secondary/20 opacity-80 ring-1 ring-inset ring-primary-content/25 md:ml-20 lg:ml-36"
+            >
+            </div>
+            <div class="relative pt-8 pl-6 sm:pt-16 md:pl-16">
+              <div class="mx-auto max-w-2xl md:mx-0 md:max-w-none">
+                <HeroNetwork />
+              </div>
+              <div
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 ring-1 ring-base-content/10 ring-inset md:rounded-3xl"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-base-200 sm:h-32">
+    </div>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title?: string
+}
+
+const { title = 'Kritama' } = Astro.props
+const ogImage = new URL('/images/preview.png', Astro.site ?? Astro.url.origin).href
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · Fractal Context Engine</title>
+    <meta
+      name="description"
+      content="Build digital assistants that are accurate, efficient, and maintainable at scale."
+    />
+    <meta property="og:site_name" content="Kritama" />
+    <meta property="og:title" content="Kritama · Fractal Context Engine" />
+    <meta
+      property="og:description"
+      content="Build digital assistants that are accurate, efficient, and maintainable at scale."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kritama · Fractal Context Engine" />
+    <meta
+      name="twitter:description"
+      content="Build digital assistants that are accurate, efficient, and maintainable at scale."
+    />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" type="image/svg+xml" href="/images/dark-logo.svg" />
+  </head>
+  <body>
+    <slot />
+    <script>
+      import { init as initPlausible } from '@plausible-analytics/tracker'
+      initPlausible({
+        domain: 'kritama.com',
+      })
+    </script>
+    <script>
+      import { initTheme } from '../scripts/theme'
+      initTheme()
+    </script>
+  </body>
+</html>

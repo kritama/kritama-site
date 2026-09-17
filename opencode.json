@@ -1,0 +1,16 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "references": {
+    "kritama-backend": {
+      "path": "~/Development/_upmaru/kritama-site",
+      "description": "Kritama Phoenix (Elixir) backend app — controllers, LiveView, API routes, and data models that the kritama-site frontend integrates with"
+    }
+  },
+  "mcp": {
+    "cloudflare": {
+      "type": "remote",
+      "url": "https://mcp.cloudflare.com/mcp",
+      "enabled": true
+    }
+  }
+}
